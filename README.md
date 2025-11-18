@@ -1,4 +1,116 @@
-# AWS CLI インストールと SSO ログイン手順 (Linux環境)
+# 【AWS】検証！Powertools AWS Lambda(Python)
+
+このREADMEは`AWSに触るなんてムリムリ！※無理じゃなかった？！2ndシーズン Advent Calendar 2025`の一環として作成されました。
+
+## この記事のポイント
+
+- Powertools AWS Lambda(Python)の基本的な使い方を理解する
+
+## はじめに
+
+この記事では「この前リリースされた機能って実際に動かすとどんな感じなんだろう」とか「もしかしたら内容次第では使えるかも？？」などAWSサービスの中でも特定の機能にフォーカスして検証していく記事です。主な内容としては実践したときのメモを中心に書きます。（忘れやすいことなど）
+誤りなどがあれば書き直していく予定です。
+
+今回はPowertools for AWS Lambda (Python)について検証します。
+
+内容は[Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)に沿って進めていきます。
+
+## Powertools AWS Lambda(Python)とは
+
+## 必要なもの
+
+今回の検証で必要なものは以下のとおりです。
+
+- AWS CLI
+- AWS SAM CLI
+
+## セットアップ方法
+
+では、まずは環境をセットアップしていきましょう。
+
+### AWS CLI のインストール
+
+まずはAWS CLIをインストールします。最新版のAWS CLIを公式インストーラーでインストールします。
+
+```bash
+# 1. インストーラーをダウンロード
+curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip"
+
+# 2. unzipがインストールされていない場合はインストール
+sudo apt update && sudo apt install unzip -y  # Ubuntu/Debian系
+# または
+sudo yum install unzip -y                     # CentOS/RHEL系
+
+# 3. ダウンロードしたファイルを展開
+unzip awscliv2.zip
+
+# 4. インストール実行
+sudo ./aws/install
+
+# 5. インストール確認
+aws --version
+
+# ダウンロードしたzipファイルと展開したディレクトリを削除してクリーンアップします。
+rm  "awscliv2.zip"
+
+# 解凍したディレクトリを削除
+rm -rf aws
+```
+
+### AWS CLI の設定
+
+AWS CLIの設定を行います。今回はAWS IAM Identity Center(旧AWS SSO)を使用してログインします。まずは以下のコマンドを実行して、SSOの設定を行います。
+
+```bash
+aws configure sso
+```
+設定時に以下の情報の入力が求められます：
+- **SSO start URL**: 組織のSSO開始URL（例：`https://my-company.awsapps.com/start`）
+- **SSO Region**: SSOが設定されているリージョン（例：`us-east-1`）
+- **アカウント選択**: 利用可能なAWSアカウントから選択
+- **ロール選択**: 選択したアカウントで利用可能なロールから選択
+- **CLI default client Region**: デフォルトのAWSリージョン（例：`ap-northeast-1`）
+- **CLI default output format**: 出力形式（`json`、`text`、`table`のいずれか）
+- **CLI profile name**: プロファイル名（`default`とします。）
+
+SSOの設定が完了したら、以下のコマンドでログインを実行します。
+
+```bash
+aws sso login
+```
+
+### AWS CLI の動作確認
+
+AWS CLIが正しくインストールされ、SSOでログインできているか確認します。AWS STSで認証情報を確認します。
+
+```bash
+aws sts get-caller-identity
+```
+
+### AWS SAM CLI のインストール
+
+[Install the AWS SAM CLI - AWS Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)に従って、セットアップを行います。
+
+AWS SAM CLIをインストールします。以下のコマンドを実行してください。
+
+```bash
+unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+sudo ./sam-installation/install
+```
+
+動作確認を行います。
+
+```bash
+sam --version
+```
+
+## 実際に使ってみよう
+
+## まとめ
+
+## ここから下はAWS CLIのインストールとSSOログイン手順ですので、必要に応じてご参照ください。
+
+## AWS CLI インストールと SSO ログイン手順 (Linux環境)
 
 このガイドでは、Linux環境でAWS CLIをインストールし、AWS SSOを使用してログインするまでの手順を説明します。
 
