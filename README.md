@@ -94,14 +94,22 @@ aws sts get-caller-identity
 AWS SAM CLIをインストールします。以下のコマンドを実行してください。
 
 ```bash
+wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
 unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
 sudo ./sam-installation/install
+rm -rf aws-sam-cli-linux-x86_64.zip sam-installation
 ```
 
 動作確認を行います。
 
 ```bash
 sam --version
+```
+
+実行結果
+
+```bash
+SAM CLI, version 1.146.0
 ```
 
 ## 実際に使ってみよう
