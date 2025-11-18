@@ -108,6 +108,12 @@ sam --version
 
 ## まとめ
 
+## 参考
+
+- [powertools-lambda-python](https://github.com/aws-powertools/powertools-lambda-python?tab=readme-ov-file)
+- [Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)
+- [AWS Lambda Powertools Python 入門 第 1 回 - buileers.flash✨ | AWS](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
+
 ## ここから下はAWS CLIのインストールとSSOログイン手順ですので、必要に応じてご参照ください。
 
 ## AWS CLI インストールと SSO ログイン手順 (Linux環境)
