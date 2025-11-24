@@ -278,6 +278,22 @@ https://github.com/ymd65536/aws_lambda_powertools/blob/main/sample/powertools_ap
 
 モジュールインストールのためにrequirements.txtの修正は必要ですが、template.ymlの修正は不要です。
 
+## 構造化されたログ出力でログを見やすくする
+
+AWS Lambdaに限らず、アプリケーションのログを見やすくすることは重要です。
+Powertools for AWS Lambda (Python)を使用すると、構造化されたログ出力を簡単に実装できます。
+
+実装手順としては以下のとおりです。
+
+- powertoolsのモジュールのインストール
+- aws_lambda_powertoolsのLoggerをインポート
+- aws_lambda_powertools.loggingのaws_lambda_powertoolsをインポート
+- ログを出力する箇所でlogger.infoやlogger.errorなどを使用
+- lambda_handlerに@logger.inject_lambda_contextデコレーターを追加
+
+具体的には以下のように修正します。
+
+
 ## まとめ
 
 ## 参考
