@@ -24,6 +24,13 @@
 - AWS CLI
 - AWS SAM CLI
 
+チュートリアルを参考に進めるので以下のサービスを利用します。
+
+- AWS Lambda
+- Amazon API Gateway
+- Amazon CloudWatch
+- AWS X-Ray
+
 ## セットアップ方法
 
 では、まずは環境をセットアップしていきましょう。
@@ -112,7 +119,51 @@ sam --version
 SAM CLI, version 1.146.0
 ```
 
-## 実際に使ってみよう
+## 準備体操：AWS SAMでHello Worldアプリケーションを作成して動作確認
+
+これからのやることのおおまかな流れは以下のとおりです。
+
+- Pythonのバージョンを確認
+- AWS SAMでHello Worldアプリケーションを作成
+- ローカルでビルドとAPI起動
+
+まずはPythonのバージョンを確認します。
+
+```bash
+python3 --version
+```
+
+今回はPython 3.12.1を使用します。このバージョンを使ってAWS SAMでHello Worldアプリケーションを作成します。
+以下のコマンドを実行して、プロジェクトを作成します。
+
+```bash
+sam init --runtime python3.12 --dependency-manager pip --app-template hello-world --name powertools-quickstart
+```
+
+ディレクトリを移動します。
+
+```bash
+cd powertools-quickstart
+```
+
+ローカルでビルドとAPI起動を行います。
+
+```bash
+sam build && sam local start-api
+```
+
+`http://127.0.0.1:3000/hello`でアクセスします。
+Web画面上に以下のようなメッセージが表示されたら成功です。
+
+```text
+{"message": "hello world"}
+```
+
+curlコマンドでアクセスする場合は以下のとおりです。※ターミナルを次の行で表示するために改行が入るようにしています。
+
+```bash
+curl http://127.0.0.1:3000/hello && echo ""
+```
 
 ## まとめ
 
