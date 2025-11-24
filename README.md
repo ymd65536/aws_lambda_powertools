@@ -121,6 +121,7 @@ SAM CLI, version 1.146.0
 
 ## 準備体操：AWS SAMでHello Worldアプリケーションを作成して動作確認
 
+Powertools for AWS Lambda (Python)のチュートリアルに入る前に、AWS SAMでHello Worldアプリケーションを作成して動作確認を行います。
 これからのやることのおおまかな流れは以下のとおりです。
 
 - Pythonのバージョンを確認
@@ -163,6 +164,72 @@ curlコマンドでアクセスする場合は以下のとおりです。※タ�
 
 ```bash
 curl http://127.0.0.1:3000/hello && echo ""
+```
+
+問題なく動作したら、次にデプロイを行います。以下のコマンドを実行します。
+
+```bash
+sam build && sam deploy --guided
+```
+
+いくつか質問が表示されるので、以下のように入力して進めてください。
+
+```
+Setting default arguments for 'sam deploy'
+=========================================
+Stack Name [powertools-quickstart]: 
+AWS Region [ap-northeast-1]: 
+#Shows you resources changes to be deployed and require a 'Y' to initiate deploy
+Confirm changes before deploy [Y/n]: Y
+#SAM needs permission to be able to create roles to connect to the resources in your template
+Allow SAM CLI IAM role creation [Y/n]: Y
+#Preserves the state of previously provisioned resources when an operation fails
+Disable rollback [y/N]: y
+HelloWorldFunction has no authentication. Is this okay? [y/N]: y
+Save arguments to configuration file [Y/n]: y
+SAM configuration file [samconfig.toml]: 
+SAM configuration environment [default]: 
+```
+
+デプロイがはじまるのでしばらく待ちます。途中で`changeset`の確認が表示されるので`Y`を入力して進めてください。
+デプロイが完了したら、以下のようなメッセージが表示されます。
+
+```
+Successfully created/updated stack - powertools-quickstart in ap-northeast-1
+```
+
+デプロイが完了したら、samのコマンドでデプロイしたLambda関数のエンドポイントを確認します。
+
+```bash
+sam list endpoints --output json
+```
+
+実行結果の`CloudEndpoint`という項目でProdとStageのURLが確認できます。
+
+```json
+  {
+    "LogicalResourceId": "ServerlessRestApi",
+    "PhysicalResourceId": "XXXXXXX",
+    "CloudEndpoint": [
+      "https://{PhysicalResourceId}.execute-api.ap-northeast-1.amazonaws.com/Prod",
+      "https://{PhysicalResourceId}.execute-api.ap-northeast-1.amazonaws.com/Stage"
+    ],
+    "Methods": [
+      "/hello['get']"
+    ]
+  }
+```
+
+`CloudEndpoint`のURLに`/hello`を付与してアクセスします。ブラウザまたはcurlコマンドでアクセスしてください。
+
+```bash
+curl https://{PhysicalResourceId}.execute-api.ap-northeast-1.amazonaws.com/Prod/hello && echo ""
+```
+
+実行結果
+
+```json
+{"message": "hello world"}
 ```
 
 ## まとめ
