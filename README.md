@@ -166,6 +166,19 @@ curlコマンドでアクセスする場合は以下のとおりです。※タ�
 curl http://127.0.0.1:3000/hello && echo ""
 ```
 
+sam local invokeによる実行も試してみます。以下のコマンドを実行します。
+イベントファイルとリソース指定で実行する例を示します。
+
+```bash
+sam local invoke HelloWorldFunction -e events/event.json
+```
+
+または短縮版で実行することもできます。
+
+```bash
+sam local invoke -e events/event.json
+```
+
 問題なく動作したら、次にデプロイを行います。以下のコマンドを実行します。
 
 ```bash
@@ -258,6 +271,10 @@ Routerクラスを保守する必要があるのももちろんですが、も�
 これはlambda_handlerの中でリクエストメソッド(GET、POSTなど)を取得している点ことが原因と考えて良いでしょう。理想的にはlambda_handlerではリクエストメソッドを意識せずに処理できると良いです。
 
 Lambda Powertoolsを使うと、これらの問題を解決できます。以下に修正例を示します。
+
+https://github.com/ymd65536/aws_lambda_powertools/blob/main/sample/powertools_api_gateway/app.py
+
+上記のコード例ではaws_lambda_powertools.event_handlerのAPIGatewayRestResolverを使うことで、lambda_handlerでリクエストメソッドを意識せずに処理できるようになっています。template.ymlの修正は不要です。
 
 ## まとめ
 
