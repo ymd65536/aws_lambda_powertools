@@ -1,0 +1,2 @@
+requests
+aws-lambda-powertools[tracer]  # Tracer requires AWS X-Ray SDK dependency

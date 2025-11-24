@@ -232,6 +232,33 @@ curl https://{PhysicalResourceId}.execute-api.ap-northeast-1.amazonaws.com/Prod/
 {"message": "hello world"}
 ```
 
+## 独自のルーター作成をPowertoolsで簡単に実装する
+
+Hello Worldアプリケーションの動作確認ができたところで、次は独自のルーター作成をPowertoolsで簡単に実装してみます。
+変更のおおまかな流れは以下のとおりです。
+
+- template.ymlの修正
+- app.pyの修正
+
+### template.ymlの修正
+
+URLパスをもう一つ追加する場合はResourcesセクションにもう1つの項目を追加するべきかのように思えますが
+単にパスをもう1つ追加するだけであれば、`Events`セクションにもう1つのイベントを追加するだけ問題ありません。
+具体的には以下のように修正します。
+
+https://github.com/ymd65536/aws_lambda_powertools/blob/8d2f40da59b6b88fe64412d2bc3e84f6849392a8/sample/self_router/template.yaml#L13-L32
+
+次にapp.pyの修正ですが、まずはpowertoolsを使わない場合のコード例を示します。
+
+https://github.com/ymd65536/aws_lambda_powertools/blob/main/sample/self_router/app.py
+
+これは最初に思いつく実装方法ですが、実際に運用してみると難しい点がいくつかあります。
+Routerクラスを保守する必要があるのももちろんですが、もうひとつ例を挙げると、lambda_handlerで取得したリクエストメソッドがRouterクラスで動作するかどうかを理解するためにRouterクラスの実装を確認する必要がある点です。
+
+これはlambda_handlerの中でリクエストメソッド(GET、POSTなど)を取得している点ことが原因と考えて良いでしょう。理想的にはlambda_handlerではリクエストメソッドを意識せずに処理できると良いです。
+
+Lambda Powertoolsを使うと、これらの問題を解決できます。以下に修正例を示します。
+
 ## まとめ
 
 ## 参考
