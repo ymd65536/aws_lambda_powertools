@@ -293,6 +293,36 @@ Powertools for AWS Lambda (Python)を使用すると、構造化されたログ�
 
 具体的には以下のように修正します。
 
+https://github.com/ymd65536/aws_lambda_powertools/blob/main/sample/powertools_logging/app.py
+
+出力されるログはJSON形式で出力されるため、CloudWatch Logs上でフィルタリングや検索が容易になります。
+では実際に動作確認を行います。
+
+ローカル実行ではCloudWatch Logsに出力されないので、以下のコマンドでビルドとデプロイを実行します。
+
+```bash
+sam build && sam deploy --guided
+```
+
+デプロイが完了したら、API Gatewayのエンドポイントにアクセスします。
+アクセス履歴がCloudWatch Logsに出力されるので、ログを確認します。以下のようなログが出力されていることが確認できます。
+
+```json
+{
+    "level": "INFO",
+    "location": "hello:18",
+    "message": "Request from unknown received",
+    "timestamp": "2025-11-24 07:27:28,549+0000",
+    "service": "APP",
+    "cold_start": true,
+    "function_name": "powertools-quickstart-HelloWorldFunction-XXXX",
+    "function_memory_size": "128",
+    "function_arn": "arn:aws:lambda:ap-northeast-1:123456789:function:powertools-quickstart-HelloWorldFunction-XXXX",
+    "function_request_id": "61647454-48da-4e08-9955-96507bc4e34b",
+    "correlation_id": "00c3e32c-985e-447a-8b30-78b8e55e191d",
+    "xray_trace_id": "1-692408df-5656645e626fec754239192e"
+}
+```
 
 ## まとめ
 
