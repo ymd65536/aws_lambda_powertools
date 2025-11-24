@@ -274,7 +274,9 @@ Lambda Powertoolsを使うと、これらの問題を解決できます。以下
 
 https://github.com/ymd65536/aws_lambda_powertools/blob/main/sample/powertools_api_gateway/app.py
 
-上記のコード例ではaws_lambda_powertools.event_handlerのAPIGatewayRestResolverを使うことで、lambda_handlerでリクエストメソッドを意識せずに処理できるようになっています。template.ymlの修正は不要です。
+上記のコード例ではaws_lambda_powertools.event_handlerのAPIGatewayRestResolverを使うことで、lambda_handlerでリクエストメソッドを意識せずに処理できるようになっています。
+
+モジュールインストールのためにrequirements.txtの修正は必要ですが、template.ymlの修正は不要です。
 
 ## まとめ
 
