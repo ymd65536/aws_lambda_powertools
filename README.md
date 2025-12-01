@@ -35,65 +35,6 @@
 
 では、まずは環境をセットアップしていきましょう。
 
-### AWS CLI のインストール
-
-まずはAWS CLIをインストールします。最新版のAWS CLIを公式インストーラーでインストールします。
-
-```bash
-# 1. インストーラーをダウンロード
-curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip"
-
-# 2. unzipがインストールされていない場合はインストール
-sudo apt update && sudo apt install unzip -y  # Ubuntu/Debian系
-# または
-sudo yum install unzip -y                     # CentOS/RHEL系
-
-# 3. ダウンロードしたファイルを展開
-unzip awscliv2.zip
-
-# 4. インストール実行
-sudo ./aws/install
-
-# 5. インストール確認
-aws --version
-
-# ダウンロードしたzipファイルと展開したディレクトリを削除してクリーンアップします。
-rm  "awscliv2.zip"
-
-# 解凍したディレクトリを削除
-rm -rf aws
-```
-
-### AWS CLI の設定
-
-AWS CLIの設定を行います。今回はAWS IAM Identity Center(旧AWS SSO)を使用してログインします。まずは以下のコマンドを実行して、SSOの設定を行います。
-
-```bash
-aws configure sso
-```
-設定時に以下の情報の入力が求められます：
-- **SSO start URL**: 組織のSSO開始URL（例：`https://my-company.awsapps.com/start`）
-- **SSO Region**: SSOが設定されているリージョン（例：`us-east-1`）
-- **アカウント選択**: 利用可能なAWSアカウントから選択
-- **ロール選択**: 選択したアカウントで利用可能なロールから選択
-- **CLI default client Region**: デフォルトのAWSリージョン（例：`ap-northeast-1`）
-- **CLI default output format**: 出力形式（`json`、`text`、`table`のいずれか）
-- **CLI profile name**: プロファイル名（`default`とします。）
-
-SSOの設定が完了したら、以下のコマンドでログインを実行します。
-
-```bash
-aws sso login
-```
-
-### AWS CLI の動作確認
-
-AWS CLIが正しくインストールされ、SSOでログインできているか確認します。AWS STSで認証情報を確認します。
-
-```bash
-aws sts get-caller-identity
-```
-
 ### AWS SAM CLI のインストール
 
 [Install the AWS SAM CLI - AWS Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)に従って、セットアップを行います。
@@ -325,6 +266,9 @@ sam build && sam deploy --guided
 ```
 
 ## まとめ
+
+Powertoolsを使うことでLambdaをより扱いやすくなったかと思います。
+ルーターの作成や構造化ログの出力などがフレームワークとして利用できるのでチーム開発で役に立つ部分かなと思いました。
 
 ## 参考
 
