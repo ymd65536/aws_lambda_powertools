@@ -13,7 +13,7 @@
 
 今回はPowertools for AWS Lambda (Python)について検証します。
 
-内容は[Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)に沿って進めていきます。
+内容は[Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)の内容をもとに書いています。
 
 ## Powertools AWS Lambda(Python)とは
 
