@@ -265,6 +265,18 @@ sam build && sam deploy --guided
 }
 ```
 
+CloudWatch Logs Insightsでログをフィルタリングする場合は以下のようなクエリを使用します。
+以下の例ではINFOレベルのログを抽出しています。
+
+```
+fields @timestamp, @message,level
+| sort @timestamp desc
+| filter (level='INFO')
+| limit 10000
+```
+
+## AWS X-Rayでトレースを可視化する
+
 ## まとめ
 
 Powertoolsを使うことでLambdaをより扱いやすくなったかと思います。

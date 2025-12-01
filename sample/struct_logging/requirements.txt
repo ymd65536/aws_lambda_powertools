@@ -1,0 +1,2 @@
+aws-lambda-powertools
+python-json-logger
