@@ -1,10 +1,10 @@
-# 【AWS】検証！Powertools AWS Lambda(Python)
+# 【AWS】検証！Powertools for AWS Lambda(Python)
 
 このREADMEは`AWSに触るなんてムリムリ！※無理じゃなかった？！2ndシーズン Advent Calendar 2025`の一環として作成されました。
 
 ## この記事のポイント
 
-- Powertools AWS Lambda(Python)の基本的な使い方を解説しているよ
+- Powertools for AWS Lambda(Python)の基本的な使い方を解説しているよ
 
 ## はじめに
 
@@ -15,13 +15,13 @@
 
 内容は[Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)の内容をもとに書いています。
 
-## Powertools AWS Lambda(Python)とは
+## Powertools for AWS Lambda(Python)とは
 
-簡単に説明するとAWS Lambda Powertoolsは、AWS Lambda関数の開発を支援するためのオープンソースのライブラリです。以下のような機能を提供しています。
+簡単に説明するとPowertools for AWS Lambdaは、AWS Lambda関数の開発を支援するためのオープンソースのライブラリです。以下のような機能を提供しています。
 
-> AWS Lambda Powertools Python は、AWS Lambda 関数用のユーティリティースイートで、トレース、構造化ロギング、カスタムメトリックスなどのベストプラクティスの導入を容易にします。
+> Powertools for AWS Lambda Python は、AWS Lambda 関数用のユーティリティースイートで、トレース、構造化ロギング、カスタムメトリックスなどのベストプラクティスの導入を容易にします。
 
-[引用：AWS Lambda Powertools Python 入門 第 1 回](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
+[引用：Powertools for AWS Lambda Python 入門 第 1 回](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
 
 あまりピンとこないと思うので、実際に使ってみてどんな感じかを見ていきましょう。
 
@@ -302,7 +302,7 @@ AWS X-Rayのトレースも簡単に実装できるのですぐにデバッグ�
 
 - [powertools-lambda-python](https://github.com/aws-powertools/powertools-lambda-python?tab=readme-ov-file)
 - [Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)
-- [AWS Lambda Powertools Python 入門 第 1 回 - buileers.flash✨ | AWS](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
+- [Powertools for AWS Lambda Python 入門 第 1 回 - buileers.flash✨ | AWS](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
 
 ## ここから下はAWS CLIのインストールとSSOログイン手順ですので、必要に応じてご参照ください。
 
