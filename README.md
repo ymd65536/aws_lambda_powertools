@@ -4,7 +4,7 @@
 
 ## この記事のポイント
 
-- Powertools AWS Lambda(Python)の基本的な使い方を理解する
+- Powertools AWS Lambda(Python)の基本的な使い方を解説しているよ
 
 ## はじめに
 
@@ -16,6 +16,14 @@
 内容は[Tutorial - Powertools for AWS Lambda (Python)](https://docs.aws.amazon.com/powertools/python/latest/tutorial/)の内容をもとに書いています。
 
 ## Powertools AWS Lambda(Python)とは
+
+簡単に説明するとAWS Lambda Powertoolsは、AWS Lambda関数の開発を支援するためのオープンソースのライブラリです。以下のような機能を提供しています。
+
+> AWS Lambda Powertools Python は、AWS Lambda 関数用のユーティリティースイートで、トレース、構造化ロギング、カスタムメトリックスなどのベストプラクティスの導入を容易にします。
+
+[引用：AWS Lambda Powertools Python 入門 第 1 回](https://aws.amazon.com/jp/builders-flash/202203/lambda-powertools-python-1/)
+
+あまりピンとこないと思うので、実際に使ってみてどんな感じかを見ていきましょう。
 
 ## 必要なもの
 
@@ -277,10 +285,18 @@ fields @timestamp, @message,level
 
 ## AWS X-Rayでトレースを可視化する
 
+Powertools for AWS Lambda (Python)を使用すると、AWS X-Rayでトレースを可視化することも簡単に実装できます。
+
+![powertools-1.png](images/powertools-1.png)
+
+[AWS X-Rayコンソール](https://console.aws.amazon.com/xray/home#/traces/)でトレースを確認します。
+
 ## まとめ
 
 Powertoolsを使うことでLambdaをより扱いやすくなったかと思います。
 ルーターの作成や構造化ログの出力などがフレームワークとして利用できるのでチーム開発で役に立つ部分かなと思いました。
+
+AWS X-Rayのトレースも簡単に実装できるのですぐにデバッグしたいときにも便利なのでオブザーバビリティを高めるためこともできると思います。
 
 ## 参考
 
